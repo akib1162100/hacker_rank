@@ -13,22 +13,19 @@ from typing import Counter
 # The function is expected to return a STRING.
 # The function accepts INTEGER_ARRAY arr as parameter.
 #
-
 def gamingArray(arr):
-    # Write your code here
-    Counter = 0
-    arr_max = 0
-    for i in range(len(arr)):
-        if arr[i] > arr_max:
-            arr_max = arr[i]
-            Counter +=1
-   
-    if Counter % 2 == 0:
-        return "ANDY"
-    else:
-        return "BOB"
-
-
+    max_num = 0
+    min_val = 99999999999999
+    for i in range(0,len(arr)-2):
+        for j in range(i+1,len(arr)-1):
+            for k in range(j+1,len(arr)):
+                if abs(arr[i]*arr[j]*arr[k]) > max_num:
+                    max_num = abs(arr[i]*arr[j]*arr[k])
+                if abs(arr[i]*arr[j]*arr[k]) < min_val:
+                    min_val = abs(arr[i]*arr[j]*arr[k])
+    
+    return str(min_val) + " " + str(max_num)
+    
 
 
 if __name__ == '__main__':
